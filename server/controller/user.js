@@ -61,7 +61,7 @@ class Controller{
                 }
                 let token = generateToken(payload)
                 res.status(200).json({token, user: payload})
-                return
+                return user
             } else {
                 return User.create({
                     name: googlepayload.name,

@@ -73,8 +73,9 @@ const hideShowElement = (target, hide, show) => {
                     $(`#password-signup`).val('')
                 })
                 .fail(err => {
+                    console.log(err)
                     $(`#signup-form .auth-notifications`).append(`
-                    <p>${err.message}</p>
+                    <p>${err.responseJSON.err}</p>
                 `)
                 })
                 .always(_ => {
