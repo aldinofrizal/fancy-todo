@@ -4,14 +4,20 @@ if(process.env.NODE_ENV === 'development'){
 
 const express = require('express')
 const app = express()
-const PORT = 4000
+const PORT = process.env.PORT || 3000
 const mongoose = require('mongoose')
 const cors = require('cors')
 const router = require('./router')
 const errorHandler = require('./middlewares/errorHandler')
 
 
-mongoose.connect('mongodb://localhost/fancytodo', { useNewUrlParser: true , useUnifiedTopology: true })
+mongoose.connect(process.env.MONGOOSE, { useNewUrlParser: true , useUnifiedTopology: true }, (err) => {
+    if(err){
+        console.log(err)
+    } else {
+        console.log('connect to mongodb atlas')
+    }
+})
 mongoose.Promise = global.Promise
 
 
