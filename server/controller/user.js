@@ -11,6 +11,8 @@ class Controller{
             password: req.body.password
         })
         .then( user => {
+            console.log('created user')
+            console.log(user)
             res.status(201).json(user)
         })
         .catch(next)
@@ -32,7 +34,7 @@ class Controller{
                     name: user.name,
                     email: user.email
                 }
-                let token = generateToken(payload)
+                let token = generateToken(payload)                
                 res.status(200).json({token, user: payload})
             }
         })
